@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
 import { Plus, Box } from "lucide-react";
 import { Button } from "../../components/ui/button";
@@ -8,7 +8,7 @@ import SearchContainer from "../../components/ui/SearchContainer.jsx";
 import { useToast, toastUtils } from "../../components/ui/use-toast";
 import SearchableSelect from "../../components/ui/SearchableSelect.jsx";
 import { useAuth } from "../../context/AuthContext";
-import { inventoryService, productService } from "../../api";
+import { productService } from "../../api";
 import { categoryService } from "../../api";
 import StatusBadge from "../../components/ui/StatusBadge.jsx";
 import ConfirmDialog from "../../components/ui/ConfirmDialog.jsx"; // Import ConfirmDialog
@@ -262,11 +262,6 @@ const ProductsPage = () => {
 		}
 	}, []);
 
-	// Handle add product
-	const handleAddProduct = () => {
-		setIsAddProductOpen(true);
-	};
-
 	// Handle sell product
 	const handleSellProduct = (product) => {
 		setSelectedProduct(product);
@@ -402,12 +397,6 @@ const ProductsPage = () => {
 
 	// Handle delete product (mark as inactive)
 	const handleDeleteProduct = (product) => {
-		setProductToAdjust(product);
-		setIsConfirmDialogOpen(true);
-	};
-
-	// Function to open the stock adjustment confirmation dialog (legacy - keeping for compatibility)
-	const handleDeleteStock = (product) => {
 		setProductToAdjust(product);
 		setIsConfirmDialogOpen(true);
 	};
