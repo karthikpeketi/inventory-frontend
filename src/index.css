@@ -1,0 +1,374 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 48 100% 99%;
+    --foreground: 220 13% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 84% 69%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 258 90% 66%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 217 91% 60%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 217 91% 60%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 217 91% 60%;
+    --sidebar-accent: 224 76% 48%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 224 76% 48%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    /* fallback for border-border utility */
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent text selection globally for non-interactive elements */
+  h1, h2, h3, h4, h5, h6, p, span, div, label, strong, em {
+    user-select: none;
+  }
+
+  /* Allow text selection for interactive elements */
+  input, textarea, select, button, [contenteditable] {
+    user-select: text;
+  }
+}
+
+@layer components {
+  /* Modern utility classes */
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg;
+  }
+
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-stats {
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8, #8b5cf6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .card-stats:hover::before {
+    opacity: 1;
+  }
+
+  .card-stats:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px -8px rgba(59, 130, 246, 0.15);
+  }
+
+
+  
+
+
+  /* Enhanced hover effects */
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  /* Smooth page transitions */
+  .page-transition {
+    animation: fadeInUp 0.1s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #5a6fd8, #6a4190);
+  }
+
+
+  
+  /* Glassmorphism effect */
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .data-table th {
+    text-align: left;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    background-color: rgb(243 244 246);; /* bg-gray-100 */
+    font-weight: 500;
+    color: #4b5563; /* text-gray-600 */
+    border-bottom-width: 1px;
+  }
+
+  .data-table td {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    border-bottom-width: 1px;
+    border-bottom-color:  rgb(229 231 235);; /* border-gray-200 */
+  }
+
+  .data-table tr:hover {
+    background-color: rgb(243 244 246);; /* bg-gray-100 */
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .badge-success {
+    background-color: #dbeafe; /* bg-blue-100 */
+    color: #1e40af;            /* text-blue-800 */
+  }
+
+  .badge-warning {
+    background-color: #fef3c7; /* bg-amber-100 */
+    color: #92400e;            /* text-amber-800 */
+  }
+
+  .badge-danger {
+    background-color: #fee2e2; /* bg-red-100 */
+    color: #991b1b;            /* text-red-800 */
+  }
+
+  /* Action buttons container for consistent alignment and height */
+  .action-buttons-container {
+    @apply flex flex-wrap md:flex-nowrap items-center md:space-x-4 space-y-2 md:space-y-0 justify-end;
+  }
+
+  .action-button {
+    @apply h-12 min-h-[3rem] flex items-center justify-center;
+  }
+
+  .action-button-search {
+    @apply w-full md:w-72 h-12;
+  }
+
+  .action-button-filter {
+    @apply h-12 min-w-[120px] flex items-center justify-center;
+  }
+
+  .action-button-export {
+    @apply h-12 min-w-[100px] flex items-center justify-center;
+  }
+
+  .action-button-add {
+    @apply h-12 min-w-[140px] flex items-center justify-center;
+  }
+
+  /* Remove all borders and outlines from data table header buttons */
+  .data-table th button,
+  .data-table thead button {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .data-table th button:focus,
+  .data-table thead button:focus,
+  .data-table th button:active,
+  .data-table thead button:active,
+  .data-table th button:hover,
+  .data-table thead button:hover {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #88a2d6;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* SearchableSelect specific scrollbar styles */
+.searchable-select-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E0 #F7FAFC;
+}
+
+.searchable-select-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.searchable-select-scroll::-webkit-scrollbar-track {
+  background: #F7FAFC;
+  border-radius: 4px;
+}
+
+.searchable-select-scroll::-webkit-scrollbar-thumb {
+  background: #CBD5E0;
+  border-radius: 4px;
+}
+
+.searchable-select-scroll::-webkit-scrollbar-thumb:hover {
+  background: #A0AEC0;
+}
