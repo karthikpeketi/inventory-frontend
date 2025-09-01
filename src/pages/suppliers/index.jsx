@@ -23,7 +23,7 @@ import {
 	CollapsibleContent,
 	CollapsibleTrigger,
 } from "../../components/ui/collapsible.jsx";
-import Pagination from "../../components/ui/pagination.jsx";
+import Pagination from "../../components/ui/Pagination.jsx";
 import AddSupplierModal from "./AddSupplierModal.jsx";
 import ConfirmDialog from "../../components/ui/ConfirmDialog.jsx";
 import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_NUMBER, DEFAULT_SORT_DIRECTION } from "../../constants/pagination.js";
@@ -45,7 +45,7 @@ const Suppliers = () => {
 	const [supplierToDelete, setSupplierToDelete] = useState(null);
 
 	const { toast } = useToast();
-	const { user, isAdmin } = useAuth();
+	const { isAdmin } = useAuth();
 	const isMobile = useIsMobile();
 
 	// Effect to handle URL search parameter changes
