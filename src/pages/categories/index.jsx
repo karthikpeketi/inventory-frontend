@@ -21,7 +21,7 @@ import ExportButton from "../../components/ui/ExportButton.jsx";
 import { useIsMobile } from "../../hooks/useMobile.jsx";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "../../components/ui/card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../../components/ui/collapsible";
-import Pagination from "../../components/ui/Pagination.jsx";
+import Pagination from "../../components/ui/pagination.jsx";
 import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_NUMBER, DEFAULT_SORT_DIRECTION } from "../../constants/pagination.js";
 import { USER_ROLES } from "../../constants/auth";
 

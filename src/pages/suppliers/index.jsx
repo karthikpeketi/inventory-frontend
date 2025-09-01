@@ -23,7 +23,7 @@ import {
 	CollapsibleContent,
 	CollapsibleTrigger,
 } from "../../components/ui/collapsible.jsx";
-import Pagination from "../../components/ui/Pagination.jsx";
+import Pagination from "../../components/ui/pagination.jsx";
 import AddSupplierModal from "./AddSupplierModal.jsx";
 import ConfirmDialog from "../../components/ui/ConfirmDialog.jsx";
 import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE_NUMBER, DEFAULT_SORT_DIRECTION } from "../../constants/pagination.js";
