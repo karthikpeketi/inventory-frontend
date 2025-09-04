@@ -175,7 +175,7 @@ const ForgotPassword = () => {
                       autoComplete="email"
                       required
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => setEmail(normalizeEmail(e.target.value))}
                       className="block w-full pl-10"
                       placeholder="Enter your email address"
                     />
