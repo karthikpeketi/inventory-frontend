@@ -9,7 +9,10 @@ const authService = {
    */
   login: async (usernameOrEmail, password) => {
     try {
-      const { data } = await axiosClient.post('/auth/login', { usernameOrEmail, password });
+      // Sanitize: trim value; lowercase if email-like
+      const input = typeof usernameOrEmail === 'string' ? usernameOrEmail : '';
+      const sanitizedUsernameOrEmail = input.includes('@') ? input.trim().toLowerCase() : input.trim();
+      const { data } = await axiosClient.post('/auth/login', { usernameOrEmail: sanitizedUsernameOrEmail, password });
 
       // Safely handle role format
       const role = data?.role?.includes('_') ? data.role.split('_')[1] : data.role;
@@ -37,11 +40,17 @@ const authService = {
    */
   register: async (firstName, lastName, email, password) => {
     try {
+      // Sanitize/normalize inputs
+      const first = (firstName || '').trim();
+      const last = (lastName || '').trim();
+      const normalizedEmail = (email || '').trim().toLowerCase();
+      const derivedUsername = normalizedEmail.includes('@') ? normalizedEmail.split('@')[0] : normalizedEmail;
+
       const response = await axiosClient.post('/auth/register', { 
-        firstName, 
-        lastName, 
-        username: email.split('@')[0].toLowerCase(),
-        email,
+        firstName: first, 
+        lastName: last, 
+        username: derivedUsername,
+        email: normalizedEmail,
         password
       });
       return response.data; 

@@ -221,7 +221,7 @@ const ProfileUpdateModal = ({ isOpen, onClose }) => {
       const dataToUpdate = {};
       if (formData.firstName !== user.firstName) dataToUpdate.firstName = formData.firstName;
       if (formData.lastName !== user.lastName) dataToUpdate.lastName = formData.lastName;
-      if (formData.username !== user.username) dataToUpdate.username = formData.username;
+      if (formData.username.trim() !== user.username) dataToUpdate.username = formData.username.trim();
       if (emailUpdateMode && isEmailValid && newEmail) dataToUpdate.email = newEmail;
 
       if (Object.keys(dataToUpdate).length === 0) {

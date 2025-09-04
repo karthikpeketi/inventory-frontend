@@ -6,6 +6,4 @@
 # Logs
 *.log
 .env.development
-.env.local
 .env.production
-.env.production.example
